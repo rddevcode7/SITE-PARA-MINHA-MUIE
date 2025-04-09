@@ -1,0 +1,195 @@
+
+<!DOCTYPE html><html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feliz Páscoa, Karine!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(135deg, #FFE3E3, #FFD6F5);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+      padding: 2rem;
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 4rem;
+      color: #d63384;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .poema {
+      font-size: 1.3rem;
+      color: #6f42c1;
+      max-width: 800px;
+      margin-bottom: 2.5rem;
+      text-align: center;
+      line-height: 1.7;
+      background-color: rgba(255, 255, 255, 0.3);
+      padding: 1.5rem;
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .assinatura {
+      margin-top: 2rem;
+      font-style: italic;
+      font-size: 1rem;
+      color: #999;
+    }
+
+    .egg-btn {
+      background: #ffb6c1;
+      border: none;
+      border-radius: 50%;
+      width: 150px;
+      height: 200px;
+      position: relative;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      cursor: pointer;
+      transition: transform 0.2s;
+      outline: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .egg-btn:focus {
+      outline: none;
+    }
+
+    .egg-btn:hover {
+      transform: scale(1.05);
+    }
+
+    .egg-btn.clicked {
+      animation: clickEffect 0.2s ease;
+    }
+
+    @keyframes clickEffect {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(0.9);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .egg-btn::before, .egg-btn::after {
+      content: '';
+      position: absolute;
+      background: #fff0f5;
+      border-radius: 50%;
+    }
+
+    .egg-btn::before {
+      width: 40px;
+      height: 40px;
+      top: 20px;
+      left: 30px;
+    }
+
+    .egg-btn::after {
+      width: 30px;
+      height: 30px;
+      bottom: 20px;
+      right: 30px;
+    }
+
+    .hearts-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 1.5rem;
+      color: #ff69b4;
+      animation: floatUp 3s ease-out forwards;
+      font-weight: bold;
+    }
+
+    @keyframes floatUp {
+      0% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-200px) rotate(20deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Feliz Páscoa, Karine!</h1>
+  <div class="text">
+    Minha linda flor de lirio, fiz esse texto e essa coisa doida aqui toda pra falar que eu te amo e que desejo uma boa Páscoa a você, só que...
+    Existe algo mais doce que a alegria? sim:<br>
+    O teu sorriso que é o meu mundo<br>
+    E transforma o simples em um belo amor profundo.<br><br>
+    Karine, você é presente meu divino,<br>
+    Meu coelho da sorte, meu destino.<br>
+    Nessa Páscoa tudo o que eu mais quero é estar ao seu lado,<br>
+    E te lembrar que eu te amo, muito.<br><br>
+    Cada clique é um "eu te amo" voando<br>
+    Como meu coração, sempre te chamando.<br>
+    Eu sinto saudades e tudo isso é, por que todo o meu amor é só teu, sim.<br>
+  </div>
+
+  <button class="egg-btn" onclick="showLove(event)"></button>
+  <div class="hearts-container" id="hearts"></div>
+  <div class="assinatura">Do seu pretinho lindo, rd seu futuro marido! 🐈‍⬛🤍</div>
+
+  <script>
+    function showLove(e) {
+      const button = e.currentTarget;
+
+      // Animação de clique
+      button.classList.add('clicked');
+      setTimeout(() => {
+        button.classList.remove('clicked');
+      }, 200);
+
+      // Criar coração flutuante
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.textContent = 'Eu te amo';
+      const heartsContainer = document.getElementById('hearts');
+
+      const x = Math.random() * (window.innerWidth - 100);
+      const y = Math.random() * (window.innerHeight - 200);
+
+      heart.style.left = `${x}px`;
+      heart.style.top = `${y + window.scrollY}px`;
+
+      heartsContainer.appendChild(heart);
+
+      setTimeout(() => {
+        heartsContainer.removeChild(heart);
+      }, 3000);
+    }
+  </script>
+</body>
+</html>
